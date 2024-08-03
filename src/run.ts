@@ -44,7 +44,7 @@ export const run = async (context: ActionContext): Promise<void> => {
   startGroup('Deploy to gist')
   if (gistId === undefined) {
     const response = await context.octokit.rest.gists.create({
-      files: { [gistFileName]: { content: PLACEHOLDER, filename: gistFileName } },
+      files: { [gistFileName]: { content: PLACEHOLDER } },
       public: createAsPublic
     })
     gistId = response.data.id!
@@ -56,7 +56,7 @@ export const run = async (context: ActionContext): Promise<void> => {
     await context.octokit.rest.gists.update({
       gist_id: gistId,
       description: gistDescription,
-      files: { [gistFileName]: { content, filename: gistFileName } },
+      files: { [gistFileName]: { content } }
     })
   } else {
     const git = simpleGit()
