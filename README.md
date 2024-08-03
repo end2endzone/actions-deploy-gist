@@ -1,17 +1,17 @@
-# Deploy to Gist
+# NOTES
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/exuanbo/actions-deploy-gist.svg)](https://github.com/exuanbo/actions-deploy-gist/releases)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/exuanbo/actions-deploy-gist/test/main.svg?event=push)](https://github.com/exuanbo/actions-deploy-gist/actions?query=workflow%3Atest)
-[![libera manifesto](https://img.shields.io/badge/libera-manifesto-lightgrey.svg)](https://liberamanifesto.com)
+This is a fork of [exuanbo/actions-deploy-gist](exuanbo/actions-deploy-gist). Unfortunately, the original does not seems to be maintained anymore. This fork exists purely for preserving backward compatibility for existing workflows. If you need to deploy to gist, you should use [Github CLI](https://cli.github.com/manual/gh_gist_create) instead.
+
+# Deploy to Gist
 
 This is a Github Action to deploy file to Github Gist.
 
 ## Quick start
 
 ```yml
-- uses: actions/checkout@v3
+- uses: actions/checkout@v4
 - name: Deploy
-  uses: exuanbo/actions-deploy-gist@v1
+  uses: end2endzone/actions-deploy-gist@main
   with:
     token: ${{ secrets.TOKEN }}
     gist_id: from_gist_url
