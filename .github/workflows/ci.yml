@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Dump GitHub context
         env:
@@ -23,7 +23,7 @@ jobs:
         run: echo "::set-output name=NVMRC::$(cat .nvmrc)"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NVMRC }}
           cache: npm
@@ -47,7 +47,7 @@ jobs:
   create-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Test action
         id: deploy-gist
@@ -62,13 +62,13 @@ jobs:
   with-all-inputs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Test action
         uses: ./
         with:
           token: ${{ secrets.TOKEN }}
-          gist_id: e885afa349a0e5d1cfb408e46d6a37bc
+          gist_id: 7fcf1140cb8d75659b14086c613ba788
           gist_description: "foo bar"
           gist_file_name: foo.bar
           file_path: ./__tests__/foo.bar
@@ -77,12 +77,12 @@ jobs:
   with-binary-file:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Test action
         uses: ./
         with:
           token: ${{ secrets.TOKEN }}
-          gist_id: e885afa349a0e5d1cfb408e46d6a37bc
+          gist_id: 7fcf1140cb8d75659b14086c613ba788
           file_path: ./__tests__/dummy.pdf
           file_type: binary
